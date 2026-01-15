@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-/* -Spinner - */
+/* ---------- Spinner ---------- */
 function Spinner() {
   return (
     <div className="flex items-center justify-center gap-3 py-10">
@@ -12,6 +12,7 @@ function Spinner() {
   );
 }
 
+/* ---------- Date Formatter ---------- */
 function formatDate(date) {
   if (!date) return "N/A";
 
@@ -34,18 +35,27 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   /* ---------- Fetch Jobs ---------- */
   const fetchJobs = async (search = "") => {
     setLoading(true);
     setError("");
 
     try {
+      if (!API_URL) {
+        throw new Error("API URL not configured");
+      }
+
       const url = search
-        ? `http://localhost:5000/api/jobs?location=${search}`
-        : "http://localhost:5000/api/jobs";
+        ? `${API_URL}/api/jobs?location=${encodeURIComponent(search)}`
+        : `${API_URL}/api/jobs`;
 
       const res = await fetch(url);
-      if (!res.ok) throw new Error("Failed to fetch jobs");
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch jobs");
+      }
 
       const data = await res.json();
       setJobs(Array.isArray(data?.data) ? data.data : []);
@@ -65,10 +75,7 @@ export default function Home() {
 
   return (
     <div className="h-screen flex bg-gray-100 text-gray-900">
-     
-     
-      {/* ===== LEFT Side ==== */}
-
+      {/* ================= LEFT PANEL ================= */}
       <aside className="w-[38%] bg-white border-r overflow-y-auto">
         <div className="p-4 border-b sticky top-0 bg-white z-10">
           <h1 className="text-xl font-bold mb-3">Job Listings</h1>
@@ -84,7 +91,7 @@ export default function Home() {
             />
             <button
               onClick={() => fetchJobs(location)}
-              className="px-4 py-2 cursor-pointer bg-[#00ff99] text-white text-sm rounded-md hover:bg-[#00e187] transition"
+              className="px-4 py-2 bg-[#00ff99] text-black text-sm rounded-md hover:bg-[#00e187] transition"
             >
               Search
             </button>
@@ -111,7 +118,7 @@ export default function Home() {
                 ${
                   selectedJob?.jobId === job.jobId
                     ? "border-blue-600 bg-blue-50 shadow"
-                    : "hover:shadow `hover:-translate-y-px`"
+                    : "hover:shadow hover:-translate-y-px"
                 }`}
             >
               <h2 className="font-semibold text-sm">{job.title}</h2>
@@ -121,7 +128,6 @@ export default function Home() {
       </aside>
 
       {/* ================= RIGHT PANEL ================= */}
-
       <main className="flex-1 overflow-y-auto">
         {!selectedJob ? (
           <div className="h-full flex items-center justify-center text-gray-500 text-lg">
@@ -137,8 +143,7 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Info*/}
-
+            {/* Info Grid */}
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="bg-white border rounded-lg p-4">
                 <p className="text-gray-500">Employment Type</p>
@@ -149,7 +154,9 @@ export default function Home() {
 
               <div className="bg-white border rounded-lg p-4">
                 <p className="text-gray-500">Experience Range</p>
-                <p className="font-medium">{selectedJob.experience || "N/A"}</p>
+                <p className="font-medium">
+                  {selectedJob.experience || "N/A"}
+                </p>
               </div>
 
               <div className="bg-white border rounded-lg p-4">
@@ -168,9 +175,10 @@ export default function Home() {
             </div>
 
             {/* Description */}
-
             <div className="bg-white border rounded-lg p-6">
-              <h2 className="text-lg font-semibold mb-3">Job Description</h2>
+              <h2 className="text-lg font-semibold mb-3">
+                Job Description
+              </h2>
               <p className="text-sm text-gray-700 leading-relaxed">
                 {selectedJob.description ||
                   "The employer has not provided a detailed job description for this role."}
