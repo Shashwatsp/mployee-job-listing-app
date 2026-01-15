@@ -81,7 +81,7 @@ mployee-job-app/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone https://github.com/Shashwatsp/mployee-job-listing-app.git
 cd mployee-job-app
 ````
 
