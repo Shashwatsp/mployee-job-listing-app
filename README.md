@@ -101,6 +101,12 @@ PORT=5000
 MONGO_URI=your_mongodb_connection_string
 ```
 
+Create a `.env` file inside the `frontend` directory:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+
+```
 Import the job data into MongoDB:
 
 ```bash
@@ -157,8 +163,8 @@ GET /api/jobs?location=Delhi
 
 ## 🌐 Deployed URLs
 
-* **Frontend (Vercel):** To be added
-* **Backend (Railway.app):** To be added
+* **Frontend (Vercel):** https://mployee-job-listing-app.vercel.app/ 
+* **Backend (Render):** https://mployee-job-listing-app.onrender.com 
 
 ---
 
