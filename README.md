@@ -1,60 +1,65 @@
 
+
 # Job Listing Web Application
 
-This is a full-stack **Job Listing Web Application** developed as part of the  
-**Mployee.me (Padhakku Peek a Book Private Limited) technical assignment**.
+This is a full-stack **Job Listing Web Application** developed as part of the
+**Mployee.me (Padhakku Peek a Book Private Limited) Technical Assignment**.
 
-The application allows users to browse job listings, search jobs by location, and view detailed job information dynamically in a split-screen layout similar to the reference UI shared in the task document.
+The application allows users to browse job listings, search jobs by location, and view detailed job information dynamically in a **split-screen layout**, similar to the reference UI provided in the task document.
 
 ---
 
 ## 🎯 Objective
 
 To build a job listing web application where:
-- Jobs are displayed on the left-hand side
-- Clicking a job shows its details on the right-hand side
-- Users can search jobs based on location
-- Job data is stored in MongoDB and filtered via backend APIs
+
+* Job listings are displayed on the **left panel**
+* Clicking a job displays its **details on the right panel**
+* Users can **search jobs by location**
+* Job data is stored in **MongoDB** and filtered via **backend APIs**
 
 ---
 
 ## 🚀 Features
 
 ### Frontend
-- Left panel displaying a list of jobs
-- Right panel displaying selected job details dynamically
-- Location-based search with a search button
-- Loading spinner while data is being fetched
-- Responsive and clean UI using Tailwind CSS
-- Graceful handling of missing fields (e.g., job description)
+
+* Left panel displaying a list of jobs
+* Right panel displaying selected job details dynamically
+* Location-based search with a search button
+* Loading spinner while data is being fetched
+* Responsive and clean UI using **Tailwind CSS**
+* Graceful handling of missing fields (e.g., job description)
 
 ### Backend
-- Job data stored in MongoDB
-- REST APIs built with Express.js
-- Backend-side filtering based on location (no frontend filtering)
-- MongoDB schema created based on the provided JSON dataset
+
+* Job data stored in **MongoDB**
+* REST APIs built using **Express.js**
+* Backend-side filtering based on location (no frontend filtering)
+* MongoDB schema created from the provided JSON dataset
 
 ---
 
 ## 🛠 Tech Stack
 
 ### Frontend
-- Next.js (App Router)
-- React.js
-- Tailwind CSS
+
+* Next.js (App Router)
+* React.js
+* Tailwind CSS
 
 ### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
 
 ---
 
 ## 📂 Project Structure
 
 ```
-
 mployee-job-app/
 │
 ├── frontend/
@@ -71,8 +76,7 @@ mployee-job-app/
 │   └── package.json
 │
 └── README.md
-
-````
+```
 
 ---
 
@@ -83,7 +87,7 @@ mployee-job-app/
 ```bash
 git clone https://github.com/Shashwatsp/mployee-job-listing-app.git
 cd mployee-job-app
-````
+```
 
 ---
 
@@ -94,20 +98,14 @@ cd backend
 npm install
 ```
 
-Create a `.env` file inside the `backend` directory:
+Create a `.env` file inside the **backend** directory:
 
 ```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 ```
 
-Create a `.env` file inside the `frontend` directory:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
-
-```
-Import the job data into MongoDB:
+Import job data into MongoDB:
 
 ```bash
 node scripts/importJobs.js
@@ -119,7 +117,7 @@ Start the backend server:
 npm run dev
 ```
 
-Backend will be running at:
+Backend will run at:
 
 ```
 http://localhost:5000
@@ -132,10 +130,21 @@ http://localhost:5000
 ```bash
 cd frontend
 npm install
+```
+
+Create a `.env` file inside the **frontend** directory:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
+
+Start the frontend server:
+
+```bash
 npm run dev
 ```
 
-Frontend will be running at:
+Frontend will run at:
 
 ```
 http://localhost:3000
@@ -157,24 +166,27 @@ GET /api/jobs
 GET /api/jobs?location=Delhi
 ```
 
-> All filtering is handled on the backend as recommended in the task instructions.
+> All filtering is handled on the **backend**, as recommended in the task instructions.
 
 ---
 
 ## 🌐 Deployed URLs
 
-* **Frontend (Vercel):** https://mployee-job-listing-app.vercel.app/ 
-* **Backend (Render):** https://mployee-job-listing-app.onrender.com 
+* **Frontend (Vercel):**
+  [https://mployee-job-listing-app.vercel.app/](https://mployee-job-listing-app.vercel.app/)
+
+* **Backend (Render):**
+  [https://mployee-job-listing-app.onrender.com](https://mployee-job-listing-app.onrender.com)
 
 ---
 
 ## ⚠️ Assumptions & Notes
 
-* The provided dataset does not consistently include a job description field.
-* When a description is missing, a fallback message is shown in the UI.
-* Some optional fields (such as posted date) are displayed only when available.
-* No mock or fake data has been added.
-* Backend-side filtering is used to improve performance and scalability.
+* The provided dataset does not consistently include a job description field
+* When a description is missing, a fallback message is displayed in the UI
+* Optional fields (such as posted date) are shown only when available
+* No mock or fake data has been added
+* Backend-side filtering is used for better performance and scalability
 
 ---
 
@@ -196,8 +208,10 @@ All requirements from the task document have been successfully implemented:
 * Location-based search
 * MongoDB integration
 * Backend filtering
-* Clean project structure
+* Clean and maintainable project structure
 
 ---
 
 **Thank you for the opportunity to work on this assignment.**
+
+---
