@@ -1,6 +1,5 @@
 const Job = require("../models/Job");
 
-// GET all jobs OR filter by location
 const getJobs = async (req, res) => {
   try {
     const { location } = req.query;
